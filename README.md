@@ -1,8 +1,69 @@
-# Welcome to your Lovable project
+
+# Redbubble Store Browser
 
 ## Project info
 
 **URL**: https://lovable.dev/projects/6b4680ec-bfcb-439e-b220-5fb0b79bca9a
+
+## About This Project
+
+This application is a web-based browser for Redbubble store products, featuring a Tinder-like swiping interface to discover and save favorite items. The app is designed to showcase products from a specific Redbubble store, allowing users to swipe through products and save their favorites.
+
+### Key Features
+
+- **Product Swiping Interface**: Tinder-style card swiping to browse through products
+- **Favorites Collection**: Save liked products to a personal collection
+- **Responsive Design**: Works seamlessly on both desktop and mobile devices
+
+## Technical Implementation
+
+### Architecture
+
+The application follows a React component-based architecture with the following structure:
+
+1. **Pages**:
+   - SwipePage: Main product browsing interface with swipeable cards
+   - FavoritesPage: Collection of liked products
+   - Index: Landing page with navigation to main features
+
+2. **Components**:
+   - ProductCard: Swipeable card component displaying product details
+   - SwipeControls: UI controls for liking/disliking products
+   - ProductGrid: Grid layout for displaying saved products
+   - OnboardingModal: First-time user instructions
+
+3. **Context**:
+   - LikedProductsContext: Global state management for saved products
+
+4. **Services**:
+   - redbubbleService: Handles product data fetching, with support for future scraping API integration
+
+### Data Flow
+
+The application is designed to work with either:
+- Mock data (for development and testing)
+- A dedicated scraping API (for production use)
+
+The service layer is prepared to connect to an external scraping API by setting the `VITE_SCRAPING_API_URL` environment variable. When this variable is set, the application will attempt to fetch real product data from the specified scraping service.
+
+### Frontend Technologies
+
+- React with TypeScript for type-safe component development
+- Tailwind CSS for responsive styling
+- shadcn/ui for consistent design components
+- React Context API for state management
+- Local Storage for persisting user's liked products
+
+## Development Roadmap
+
+1. **Phase 1** ✅ - Initial application setup with mock data and core UI components
+2. **Phase 2** ✅ - Implement service layer with API integration capability
+3. **Phase 3** (Future) - Connect to a dedicated scraping service or backend proxy
+4. **Phase 4** (Future) - Add user authentication and cloud storage for favorites
+
+## How to Run the Project
+
+See setup instructions below for running the project locally.
 
 ## How can I edit this code?
 
@@ -36,38 +97,17 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+To use a real scraping API instead of mock data, set the following environment variable:
 
-**Use GitHub Codespaces**
+```
+VITE_SCRAPING_API_URL=https://your-scraping-api-endpoint
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+When this variable is set, the application will attempt to fetch real product data from your Redbubble store.
 
-## What technologies are used for this project?
+## Deploy with Lovable
 
-This project is built with:
+To deploy this project, open [Lovable](https://lovable.dev/projects/6b4680ec-bfcb-439e-b220-5fb0b79bca9a) and click on Share -> Publish.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/6b4680ec-bfcb-439e-b220-5fb0b79bca9a) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
