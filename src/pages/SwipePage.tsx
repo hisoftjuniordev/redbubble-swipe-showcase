@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLikedProducts } from '../context/LikedProductsContext';
 import ProductCard from '../components/ProductCard';
@@ -13,13 +12,26 @@ const SwipePage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { addLikedProduct } = useLikedProducts();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const loadProducts = async () => {
       setIsLoading(true);
+      setError(null);
       try {
         // Fetch products from your Redbubble store
         const redbubbleProducts = await fetchRedbubbleProducts();
+        
+        if (redbubbleProducts.length === 0) {
+          setError("No products found. Please check your store URL.");
+          toast({
+            title: "No products found",
+            description: "We couldn't find any products in your store.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
         setProducts(redbubbleProducts);
         toast({
           title: "Products loaded",
@@ -27,9 +39,10 @@ const SwipePage: React.FC = () => {
         });
       } catch (error) {
         console.error("Error loading products:", error);
+        setError("Failed to load products. Please try again later.");
         toast({
           title: "Error loading products",
-          description: "Could not load products from your store. Using mock data instead.",
+          description: "Could not load products from your store. Using fallback data.",
           variant: "destructive",
         });
       } finally {
@@ -44,6 +57,10 @@ const SwipePage: React.FC = () => {
     if (direction === 'right') {
       // Like the product
       addLikedProduct(product);
+      toast({
+        title: "Product liked",
+        description: `${product.name} has been added to your favorites!`,
+      });
     }
     
     // Move to the next product
@@ -78,6 +95,20 @@ const SwipePage: React.FC = () => {
           <div className="flex flex-col items-center justify-center">
             <div className="w-16 h-16 border-4 border-pink-400 border-t-transparent rounded-full animate-spin mb-4"></div>
             <p className="text-lg text-white">Loading products from your store...</p>
+          </div>
+        ) : error ? (
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm w-full text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <h2 className="text-2xl font-bold mb-2">Something went wrong</h2>
+            <p className="text-gray-600 mb-6">{error}</p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-pink-400 to-red-300 text-white font-medium hover:from-pink-500 hover:to-red-400 transition-all"
+            >
+              Try Again
+            </button>
           </div>
         ) : isFinished ? (
           <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm w-full text-center">
