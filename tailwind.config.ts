@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				swipe: {
+					like: '#4CD964',
+					nope: '#FF3B30',
+					background: '#f0f2f5',
+					card: '#ffffff',
+				},
+			},
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -70,26 +80,38 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' },
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' },
+				},
+				'card-swipe-right': {
+					'0%': { transform: 'translateX(0) rotate(0)' },
+					'100%': { transform: 'translateX(150%) rotate(30deg)' },
+				},
+				'card-swipe-left': {
+					'0%': { transform: 'translateX(0) rotate(0)' },
+					'100%': { transform: 'translateX(-150%) rotate(-30deg)' },
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'card-swipe-right': 'card-swipe-right 0.5s forwards',
+				'card-swipe-left': 'card-swipe-left 0.5s forwards',
+				'fade-in': 'fade-in 0.5s ease-out',
+			},
+			backgroundImage: {
+				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+				'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'gradient-primary': 'linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4)',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

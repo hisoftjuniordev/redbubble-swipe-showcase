@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -79,6 +75,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -96,6 +93,35 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-poppins;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+  }
+
+  .swipe-card-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .swipe-card {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+  }
+
+  .swipe-card.swiping-right {
+    animation: card-swipe-right 0.5s forwards;
+  }
+
+  .swipe-card.swiping-left {
+    animation: card-swipe-left 0.5s forwards;
+  }
+
+  .swipe-action {
+    transition: all 0.2s ease;
+  }
+
+  .swipe-action:hover {
+    transform: scale(1.1);
   }
 }
