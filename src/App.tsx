@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import FavoritesPage from "./pages/FavoritesPage";
 import NotFound from "./pages/NotFound";
+import { LikedProductsProvider } from "./context/LikedProductsContext";
 
 const queryClient = new QueryClient();
 
@@ -16,12 +17,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <LikedProductsProvider>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </LikedProductsProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
