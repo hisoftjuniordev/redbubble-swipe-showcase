@@ -4,8 +4,9 @@ import { useLikedProducts } from '../context/LikedProductsContext';
 import ProductCard from '../components/ProductCard';
 import SwipeControls from '../components/SwipeControls';
 import OnboardingModal from '../components/OnboardingModal';
-import { mockProducts } from '../data/mockProducts';
 import { Product, SwipeDirection } from '../types';
+import { fetchRedbubbleProducts } from '../utils/redbubbleService';
+import { toast } from '../hooks/use-toast';
 
 const SwipePage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -14,16 +15,23 @@ const SwipePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // In a real application, this would be an API call to Redbubble
-    // For now, we'll just use our mock data
     const loadProducts = async () => {
       setIsLoading(true);
       try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        setProducts(mockProducts);
+        // Fetch products from your Redbubble store
+        const redbubbleProducts = await fetchRedbubbleProducts();
+        setProducts(redbubbleProducts);
+        toast({
+          title: "Products loaded",
+          description: `${redbubbleProducts.length} products from your store are ready to browse!`,
+        });
       } catch (error) {
         console.error("Error loading products:", error);
+        toast({
+          title: "Error loading products",
+          description: "Could not load products from your store. Using mock data instead.",
+          variant: "destructive",
+        });
       } finally {
         setIsLoading(false);
       }
@@ -69,7 +77,7 @@ const SwipePage: React.FC = () => {
         {isLoading ? (
           <div className="flex flex-col items-center justify-center">
             <div className="w-16 h-16 border-4 border-pink-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-lg text-white">Loading awesome products...</p>
+            <p className="text-lg text-white">Loading products from your store...</p>
           </div>
         ) : isFinished ? (
           <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm w-full text-center">

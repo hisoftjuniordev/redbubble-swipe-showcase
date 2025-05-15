@@ -1,77 +1,78 @@
 
 import { Product } from '../types';
 
+// These are mock products - in a real implementation, you would fetch from Redbubble
 export const mockProducts: Product[] = [
   {
     id: '1',
-    name: 'Cute Cat T-Shirt',
+    name: 'Hecomaister Original Design T-Shirt',
     price: '$24.99',
     imageUrl: 'https://images.unsplash.com/photo-1618354691792-d1d42acfd860?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/1',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/1',
     category: 'T-Shirts',
-    description: 'Adorable cat design perfect for cat lovers!'
+    description: 'Original artistic design by Hecomaister, perfect for casual wear!'
   },
   {
     id: '2',
-    name: 'Mountain Landscape Poster',
+    name: 'Hecomaister Art Print',
     price: '$18.50',
     imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/2',
-    category: 'Posters',
-    description: 'Beautiful mountain landscape artwork for your home'
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/2',
+    category: 'Art Prints',
+    description: 'Beautiful landscape artwork for your home or office'
   },
   {
     id: '3',
-    name: 'Space Galaxy Phone Case',
+    name: 'Hecomaister Designer Phone Case',
     price: '$15.99',
     imageUrl: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/3',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/3',
     category: 'Phone Cases',
-    description: 'Protect your phone with this stunning galaxy design'
+    description: 'Protect your phone with this stunning artistic design'
   },
   {
     id: '4',
-    name: 'Vintage Camera Sticker',
+    name: 'Hecomaister Collectible Sticker',
     price: '$3.50',
     imageUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/4',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/4',
     category: 'Stickers',
-    description: 'Classic vintage camera design for photography enthusiasts'
+    description: 'Original sticker design for laptops, notebooks, or water bottles'
   },
   {
     id: '5',
-    name: 'Botanical Art Print',
+    name: 'Hecomaister Special Edition Print',
     price: '$22.00',
     imageUrl: 'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/5',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/5',
     category: 'Art Prints',
-    description: 'Beautiful botanical illustration perfect for any room'
+    description: 'Limited edition art print from Hecomaister'
   },
   {
     id: '6',
-    name: 'Abstract Pattern Tote Bag',
+    name: 'Hecomaister Designer Tote Bag',
     price: '$19.99',
     imageUrl: 'https://images.unsplash.com/photo-1608731267464-c0c889c2ff90?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/6',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/6',
     category: 'Tote Bags',
-    description: 'Stylish tote bag with a modern abstract pattern'
+    description: 'Stylish tote bag with a unique Hecomaister design'
   },
   {
     id: '7',
-    name: 'Ocean Waves Throw Pillow',
+    name: 'Hecomaister Decorative Throw Pillow',
     price: '$28.50',
     imageUrl: 'https://images.unsplash.com/photo-1520756977789-eac289844098?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/7',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/7',
     category: 'Home Decor',
-    description: 'Add a touch of the ocean to your home with this wave design'
+    description: 'Comfortable and stylish throw pillow with original artwork'
   },
   {
     id: '8',
-    name: 'Minimalist Geometric Notebook',
+    name: 'Hecomaister Designer Notebook',
     price: '$12.99',
     imageUrl: 'https://images.unsplash.com/photo-1531346680769-a1e79e2e1f0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80',
-    productUrl: 'https://www.redbubble.com/product/8',
+    productUrl: 'https://www.redbubble.com/people/hecomaister/works/8',
     category: 'Stationery',
-    description: 'Clean geometric design notebook for your notes and ideas'
+    description: 'Premium notebook with a unique Hecomaister design on the cover'
   }
 ];
